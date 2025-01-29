@@ -1,14 +1,28 @@
 import sqlite3
-from typing import TypeAlias
+from typing import TypeAlias, Optional
 
 import pandas as pd
 
 from logger_setup import logger
 
-ExcelLikeParseRes: TypeAlias = pd.DataFrame | dict[str, pd.DataFrame] | dict[int, pd.DataFrame]
+SourceFileParseRes: TypeAlias = pd.DataFrame | dict[str, pd.DataFrame] | dict[int, pd.DataFrame]
 
 
-def normalise_data(data: ExcelLikeParseRes, source_name: str) -> pd.DataFrame:
+def read_source_file(source_path: str) -> Optional[SourceFileParseRes]:
+    """Adapter for reading different file types.
+
+    Easily extensible to support other file formats.
+    """
+    if source_path.endswith(".csv"):
+        return pd.read_csv(source_path)
+
+    if source_path.endswith(".xlsx") or source_path.endswith(".xls"):
+        return pd.ExcelFile(source_path).parse("Sheet1")
+
+    return None
+
+
+def normalise_data(data: SourceFileParseRes, source_name: str) -> pd.DataFrame:
     """Normalises data based on a unified schema."""
     return pd.DataFrame(
         {

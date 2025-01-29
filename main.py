@@ -1,24 +1,29 @@
 import pandas as pd
 
-from constants import EXPORT_CSV_PATH, FILE1_PATH, FILE2_PATH, FILE3_PATH
-from data_processing import load_data_to_db, normalise_data
+from constants import EXPORT_CSV_PATH, INPUT_DIR_PATH
+from data_processing import load_data_to_db, normalise_data, read_source_file
 from db import initialise_database
 from export import export_approved_data
 from logger_setup import logger
 from review import review_records
 
+import os
+
+
 if __name__ == "__main__":
     logger.info("Reading input files...")
-    file1 = pd.ExcelFile(FILE1_PATH)
-    file2 = pd.read_csv(FILE2_PATH)
-    file3 = pd.ExcelFile(FILE3_PATH)
+
+    fparse_results = {}
+    for fname in os.listdir(INPUT_DIR_PATH):
+        fpath = os.path.join(INPUT_DIR_PATH, fname)
+        if os.path.isfile(fpath):
+            fparse_res = read_source_file(fpath)
+            if fparse_res is not None:
+                fparse_results[fname] = fparse_res
 
     logger.info("Normalising data...")
-    file1_normalised = normalise_data(file1.parse("Sheet1"), "File1")
-    file2_normalised = normalise_data(file2, "File2")
-    file3_normalised = normalise_data(file3.parse("Sheet1"), "File3")
-
-    combined_data = pd.concat([file1_normalised, file2_normalised, file3_normalised], ignore_index=True)
+    normalised_data = [normalise_data(res, fname) for fname, res in fparse_results.items()]
+    combined_data = pd.concat(normalised_data, ignore_index=True)
 
     connection = initialise_database()
     if connection is not None:
