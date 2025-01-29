@@ -1,5 +1,5 @@
 import sqlite3
-from typing import TypeAlias, Optional
+from typing import Optional, TypeAlias
 
 import pandas as pd
 
@@ -50,5 +50,7 @@ def load_data_to_db(conn: sqlite3.Connection, data: pd.DataFrame) -> None:
         data.to_sql("emissions", conn, if_exists="append", index=False)
     except sqlite3.OperationalError:
         logger.error("Schema conflict. Please ensure the data is normalised.")
+        raise
     except Exception as e:
         logger.error("Error loading data into the database: %s" % e)
+        raise

@@ -1,3 +1,6 @@
+import argparse
+import os
+
 import pandas as pd
 
 from constants import EXPORT_CSV_PATH, INPUT_DIR_PATH
@@ -7,10 +10,14 @@ from export import export_approved_data
 from logger_setup import logger
 from review import review_records
 
-import os
-
-
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Simple emissions ETL", usage="PROG [-h] [--sector <sector>] [--region <region>] [--year <year>]"
+    )
+    parser.add_argument("--sector", type=str, help="Sector name to filter by")
+    parser.add_argument("--region", type=str, help="Region name to filter by")
+    parser.add_argument("--year", type=int, help="Year to filter by")
+
     logger.info("Reading input files...")
 
     fparse_results = {}
@@ -33,21 +40,9 @@ if __name__ == "__main__":
         logger.info("Starting the review process...")
         review_records(connection)
 
-        grouping_filters = {}
-
-        sector = input("Input sector name (enter to skip): ")
-        if sector:
-            grouping_filters["sector"] = sector
-
-        region = input("Input region name (enter to skip): ")
-        if region:
-            grouping_filters["region"] = region
-
-        year = input("Input year (enter to skip): ")
-        if year:
-            grouping_filters["year"] = int(year)
+        aggregate_filters = {k: v for k, v in parser.parse_args()._get_kwargs() if v is not None}
 
         logger.info("Exporting approved data...")
-        export_approved_data(connection, EXPORT_CSV_PATH, **grouping_filters)
+        export_approved_data(connection, EXPORT_CSV_PATH, **aggregate_filters)
 
-        logger.info("Database initialised, data loaded, and export script is ready.")
+        logger.info("Database initialised, data loaded, and export is ready.")

@@ -13,7 +13,7 @@ def export_approved_data(
     region: Optional[str] = None,
     year: Optional[int] = None,
 ) -> None:
-    """Exports approved data to a CSV file with optional filters."""
+    """Exports (optionally) filtered portion of the approved data to a CSV file."""
     query = "SELECT * FROM emissions WHERE is_approved = 1"
 
     filters = []
@@ -36,11 +36,16 @@ def export_approved_data(
         approved_data.to_csv(output_file_path, index=False)
     except sqlite3.Error as e:
         logger.error("Error reading from the database: %s" % e)
+        raise
     except FileNotFoundError:
         logger.error("Invalid output file path.")
+        raise
     except PermissionError:
         logger.error("Permission denied to write to the output file.")
+        raise
     except OSError as e:
         logger.error("Error writing to the output file: %s" % e)
+        raise
     except MemoryError:
         logger.error("Data frame too large.")
+        raise

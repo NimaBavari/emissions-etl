@@ -23,6 +23,7 @@ def approve_record(conn: sqlite3.Connection, record_id: int) -> None:
         conn.commit()
     except sqlite3.Error as e:
         logger.error("Error approving record %d: %s" % (record_id, e))
+        raise
 
 
 def reject_record(conn: sqlite3.Connection, record_id: int) -> None:
@@ -33,6 +34,7 @@ def reject_record(conn: sqlite3.Connection, record_id: int) -> None:
         conn.commit()
     except sqlite3.Error as e:
         logger.error("Error rejecting record %d: %s" % (record_id, e))
+        raise
 
 
 def review_records(conn: sqlite3.Connection) -> None:
@@ -64,3 +66,6 @@ def review_records(conn: sqlite3.Connection) -> None:
                 logger.warning("Invalid action. Please enter 'a' to approve or 'r' to reject.")
         except ValueError:
             logger.warning("Invalid input. Please enter a valid record ID.")
+        except sqlite3.Error as e:
+            logger.error("Error processing record: %s" % e)
+            raise
