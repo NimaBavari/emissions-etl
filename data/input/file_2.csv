@@ -1,0 +1,31 @@
+Activity Name,Sector,Category,Unit ,kgCO2e,kgCO2,kgCH4,kgN2O,Assesment Report,Scope,Life Cylce Assesment,Validity Year,Validity Region
+Non municipal waste - Biological (sludge),waste,general waste,Kg,4.688089464407208,4.457603357903542,,0.0009219444260146647,AR4,1,end_of_life,2023,FR
+Diesel hybrid car (rental),transport,vehicles,Km,8.065436095257986,7.83631899421101,,0.0009164684041879049,AR4,1,use,2020,GLOBAL
+Diesel hybrid bus (<7.5t),transport,vehicles,Km,1.4041774177909316,1.3353261156720642,,0.0002754052084754701,AR4,3,use,2020,GLOBAL
+Liquefied petroleum gas LPG - transport,energy,fuel,L,2.8599787346247894,2.7667253927892475,,0.00037301336734216716,AR4,1,use,2023,US
+Petrol PHEV car,transport,vehicles,Km,4.7723489704612785,4.655921798822073,,0.0004657086865568234,AR4,1,use,2020,FR
+Battery EV bus (<12t),transport,vehicles,Km,2.777430549161601,2.567787530005602,,0.000838572076623996,AR4,2,use,2020,GB
+Sub-bituminous coal - industrial,energy,fuel,Kg,2.7753639814959126,2.6708363349172615,,0.0004181105863146041,AR4,2,use,2023,GB
+International long-haul flight - with RF effect,transport,air travel,Passenger-km,7.660848760632898,7.427894577260483,,0.0009318167334896573,AR4,3,use,2020,US
+Office waste - waste to landfill without gas recovery,waste,general waste,Kg,3.9139690586527873,3.889875974297662,,9.63723374205011e-05,AR4,1,end_of_life,2023,DE
+Paper - waste to landfill without gas recovery,waste,paper and cardboard waste,Kg,4.985418560841822,4.985418560841822,,,AR4,2,end_of_life,2023,DE
+Diesel PHEV LCV (<1350cc) - electricity consumption post-2015,transport,vehicles,Km,2.9617350061115095,2.8341531162633093,,0.0005103275593927999,AR4,2,use,2020,GB
+Garden - waste to landfill with gas recovery,waste,general waste,Kg,7.613992148616788,7.613992148616788,,,AR4,1,end_of_life,2023,GLOBAL
+Petrol LCV (2000-3000cc) post-2015,transport,vehicles,Km,0.017147419091233518,0.017147419091233518,,,AR4,1,use,2020,FR
+Electric Bus,transport,road travel,Passenger-km,0.7415075412255363,0.5618156414067621,,0.0007187675992750966,AR4,2,use,2023,US
+Taxi (average) post-2015,transport,vehicles,Km,4.349045284796509,4.225674043142355,,0.0004934849666166152,AR4,2,use,2020,DE
+LCV - PHEV (Petrol) - Electricity consumption (>3000 cc) post-2015,transport,vehicles,Km,1.579305196535005,1.5575976270417324,,8.683027797308984e-05,AR4,3,use,2023,FR
+Wood - industrial,energy,fuel,Kg,8.179959303883743,8.139106866677308,,0.00016340974882574454,AR4,1,use,2023,FR
+Diesel bus (>12t),transport,vehicles,Km,6.708902260777968,6.662407388593049,,0.00018597948873967695,AR4,1,use,2020,FR
+Domestic coastal freight - Oil products tanker - MEG 2022,transport,sea freight,Tonne-km,8.808982796619025,8.579742959715547,,0.0009169593476139091,AR4,3,use,2023,GLOBAL
+Metropolitan Railway Diesel,transport,rail travel,Passenger-km,4.2663939052518804,4.2663939052518804,,,AR4,2,use,2023,GB
+General cargo < 4999dwt,transport,sea freight,Tonne-km,6.221304168493689,6.15186196084106,,0.00027776883061051495,AR4,2,use,2020,DE
+Vehicle transport 0 - 3999 CEU,transport,sea freight,Tonne-km,3.2458967092866273,3.213867699413372,,0.0001281160394930203,AR4,2,use,2020,FR
+LCV - Petrol hybrid - default factor,transport,vehicles,Km,5.161102308952832,4.986970781252759,,0.0006965261108002937,AR4,1,use,2023,US
+Lignite coal - industrial,energy,fuel,Kg,1.8203881195006077,1.8203881195006077,,,AR4,2,use,2023,GB
+Water supply,water,water supply,Person-year,6.8432915286656995,6.704646116309288,,0.0005545816494256478,AR4,3,unknown,2023,US
+Liquefied petroleum gas LPG - transport,energy,fuel,L,2.0947551056671223,2.0947551056671223,,,AR4,3,use,2020,DE
+HGV diesel (25 - 30t) post-2015,transport,vehicles,Km,2.739234454211548,2.576950124713222,,0.0006491373179933033,AR4,3,use,2023,GB
+LCV - PHEV (Petrol) - Petrol consumption (>3000 cc) post-2015,transport,vehicles,Km,7.3889258626766425,7.332917164905694,,0.00022403479108379433,AR4,2,use,2023,GB
+General cargo - 5000 - 9999dwt,transport,sea freight,Tonne-km,5.596464577810166,5.352976809910293,,0.0009739510715994934,AR4,2,use,2020,FR
+Diesel PHEV car (2000-3000cc) - electricity consumption,transport,vehicles,Km,8.94736440886056,8.893986705532866,,0.00021351081331077938,AR4,1,use,2020,GB
