@@ -7,5 +7,10 @@ code-quality:
 	rm -rf .mypy_cache
 
 start:
-	docker build -t etl .
-	docker run -it --rm -v $(shell pwd)/data:/app/data etl python3 main.py $(ARGS)
+	docker-compose up -d
+
+stop:
+	docker-compose down --remove-orphans
+
+monitor:
+	docker-compose logs --follow

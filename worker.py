@@ -3,12 +3,7 @@ import asyncio
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from activities import (
-    export_approved_data,
-    load_data_to_db,
-    normalise_and_combine_data,
-    read_source_files,
-)
+from activities import export_approved_data, load_data_to_db, normalise_and_combine_data, read_source_files
 from constants import MAIN_TASK_QUEUE, TEMPORALIO_URL
 from data_converter import dataframe_converter
 from workflow import EmissionsWorkflow

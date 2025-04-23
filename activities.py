@@ -5,9 +5,9 @@ import aiosqlite
 import pandas as pd
 from temporalio import activity
 
-from constants import INPUT_DIR_PATH, DB_FILE_PATH
+from constants import DB_FILE_PATH, INPUT_DIR_PATH
 from logger_setup import create_or_get_logger
-from utils import SourceFileParseRes, normalise_data, read_source_file, initialise_database
+from utils import SourceFileParseRes, initialise_database, normalise_data, read_source_file
 
 logger = create_or_get_logger(__name__)
 
@@ -49,7 +49,7 @@ async def load_data_to_db(data: dict[str, list]) -> None:
     logger.info("Initialising DB...")
     conn = await initialise_database()
     if conn is None:
-        logger.error("Database initialisation error: %s" % e)
+        logger.error("Database initialisation error.")
         return
 
     logger.info("Loading normalised data to DB...")

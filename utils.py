@@ -1,7 +1,9 @@
 from typing import Optional, TypeAlias
-from constants import DB_FILE_PATH
-import pandas as pd
+
 import aiosqlite
+import pandas as pd
+
+from constants import DB_FILE_PATH
 
 SourceFileParseRes: TypeAlias = pd.DataFrame | dict[str, pd.DataFrame] | dict[int, pd.DataFrame]
 
@@ -75,5 +77,5 @@ async def initialise_database() -> Optional[aiosqlite.Connection]:
 
         await conn.commit()
         return conn
-    except aiosqlite.Error as e:
+    except aiosqlite.Error:
         return None

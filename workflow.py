@@ -5,12 +5,7 @@ from temporalio import workflow
 from constants import EXPORT_CSV_PATH
 
 with workflow.unsafe.imports_passed_through():
-    from activities import (
-        export_approved_data,
-        load_data_to_db,
-        normalise_and_combine_data,
-        read_source_files,
-    )
+    from activities import export_approved_data, load_data_to_db, normalise_and_combine_data, read_source_files
 
 
 @workflow.defn
