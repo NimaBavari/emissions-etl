@@ -21,18 +21,19 @@ services:
       - "7233:7233"
     environment:
       - DB=postgres12
+      - DB_PORT=5432
       - POSTGRES_USER=temporal
       - POSTGRES_PWD=temporal
       - POSTGRES_SEEDS=postgresql
-      - TEMPORAL_ADDRESS=temporal:7233
     depends_on:
       postgresql:
         condition: service_healthy
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:7233" ]
+      test: [ "CMD", "tctl", "--address", "localhost:7233", "cluster", "health" ]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 10
+      start_period: 30s
 
   temporal-ui:
     image: temporalio/ui:latest
@@ -41,14 +42,14 @@ services:
     environment:
       - TEMPORAL_ADDRESS=temporal:7233
     depends_on:
-      temporal:
-        condition: service_healthy
+      - temporal
 
   df-worker:
     build: .
     environment:
       TEMPORAL_ADDRESS: "temporal:7233"
     depends_on:
-      temporal:
-        condition: service_healthy
-    command: sh -c "python3 run_workflow.py & python3 worker.py"
+      - temporal
+    volumes:
+      - ./data:/app/data
+    command: sh -c "sleep 30 && python3 run_workflow.py & python3 worker.py"
